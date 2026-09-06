@@ -4,6 +4,7 @@ import com.ailingmeng.ultimatepvpboss.UltimatePvpBoss;
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.resources.ResourceLocation;
 
 import java.io.InputStream;
@@ -19,7 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class BossSkinTexture {
-    private static final ResourceLocation STEVE = new ResourceLocation("textures/entity/steve.png");
+    private static final ResourceLocation STEVE = DefaultPlayerSkin.getDefaultSkin();
     private static final long RETRY_DELAY_MS = 5 * 60 * 1000L;
     private static final int CONNECT_TIMEOUT_MS = 5_000;
     private static final int READ_TIMEOUT_MS = 10_000;
