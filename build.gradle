@@ -108,3 +108,17 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 17
 }
+
+// Pure Java tests: no game window, OpenGL context or additional test library is needed.
+tasks.register('renderStallRegressionTest', JavaExec) {
+    dependsOn tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.ailingmeng.ultimatepvpboss.client.RenderStallWatchdogTest'
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('renderStallRegressionTest')
+}
